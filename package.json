@@ -1,0 +1,22 @@
+{
+  "name": "exercicios-api-graphql-pactumjs",
+  "version": "1.0.0",
+  "description": "Exercícios de testes de API GraphQL com PactumJS - Categorias e Produtos",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha test/**/*test.js --timeout 10000",
+    "test:categorias": "mocha test/categorias/*.test.js --timeout 10000",
+    "test:produtos": "mocha test/produtos/*.test.js --timeout 10000",
+    "test:contract": "mocha test/contract/*.test.js --timeout 10000",
+    "test:all": "mocha 'test/**/*.test.js' --timeout 10000"
+  },
+  "keywords": ["graphql", "pactum", "api-testing", "contract-testing"],
+  "author": "Leonardo",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "mocha": "^11.3.0",
+    "pactum": "^3.9.1",
+    "pactum-matchers": "^1.2.0"
+  }
+}
