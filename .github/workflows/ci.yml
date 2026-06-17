@@ -1,0 +1,35 @@
+name: Testes de API GraphQL (CI)
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout do Repositório
+        uses: actions/checkout@v4
+
+      - name: Configurar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+          cache: 'npm'
+
+      - name: Instalar Dependências
+        run: npm ci
+
+      - name: Executar Testes de API e Gerar Relatório
+        run: npm run test:report
+
+      - name: Salvar Relatório Mochawesome como Artefato
+        if: always() # Garante que o relatório será salvo mesmo se os testes falharem
+        uses: actions/upload-artifact@v4
+        with:
+          name: relatorio-mochawesome
+          path: mochawesome-report/
+          retention-days: 5
